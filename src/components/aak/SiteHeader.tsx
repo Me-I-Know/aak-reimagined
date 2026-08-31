@@ -36,13 +36,19 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          {nav.map((item) => (
-            <a
+        <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
+          {internalNav.map((item) => (
+            <Link
               key={item.label}
-              href={item.href}
+              to={item.to}
               className="label text-ink/80 hover:text-aak-red"
+              activeProps={{ className: "label text-aak-red" }}
             >
+              {item.label}
+            </Link>
+          ))}
+          {nav.map((item) => (
+            <a key={item.label} href={item.href} className="label text-ink/80 hover:text-aak-red">
               {item.label}
             </a>
           ))}
