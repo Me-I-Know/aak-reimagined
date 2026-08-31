@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArbitrationRouteImport } from './routes/arbitration'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TeamRouteImport } from './routes/team'
@@ -18,6 +19,11 @@ import { Route as TermsRouteImport } from './routes/terms'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArbitrationRoute = ArbitrationRouteImport.update({
+  id: '/arbitration',
+  path: '/arbitration',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventsRoute = EventsRouteImport.update({
@@ -43,6 +49,7 @@ const TermsRoute = TermsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/arbitration': typeof ArbitrationRoute
   '/events': typeof EventsRoute
   '/privacy': typeof PrivacyRoute
   '/team': typeof TeamRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/arbitration': typeof ArbitrationRoute
   '/events': typeof EventsRoute
   '/privacy': typeof PrivacyRoute
   '/team': typeof TeamRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/arbitration': typeof ArbitrationRoute
   '/events': typeof EventsRoute
   '/privacy': typeof PrivacyRoute
   '/team': typeof TeamRoute
@@ -65,14 +74,22 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/events' | '/privacy' | '/team' | '/terms'
+  fullPaths: '/' | '/arbitration' | '/events' | '/privacy' | '/team' | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/events' | '/privacy' | '/team' | '/terms'
-  id: '__root__' | '/' | '/events' | '/privacy' | '/team' | '/terms'
+  to: '/' | '/arbitration' | '/events' | '/privacy' | '/team' | '/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/arbitration'
+    | '/events'
+    | '/privacy'
+    | '/team'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArbitrationRoute: typeof ArbitrationRoute
   EventsRoute: typeof EventsRoute
   PrivacyRoute: typeof PrivacyRoute
   TeamRoute: typeof TeamRoute
@@ -86,6 +103,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/arbitration': {
+      id: '/arbitration'
+      path: '/arbitration'
+      fullPath: '/arbitration'
+      preLoaderRoute: typeof ArbitrationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/events': {
@@ -121,6 +145,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArbitrationRoute: ArbitrationRoute,
   EventsRoute: EventsRoute,
   PrivacyRoute: PrivacyRoute,
   TeamRoute: TeamRoute,

@@ -2,12 +2,17 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/aak-logo.png";
 
+const internalNav = [
+  { label: "Events", to: "/events" },
+  { label: "Arbitration", to: "/arbitration" },
+  { label: "Team", to: "/team" },
+] as const;
+
 const nav = [
   { label: "About Us", href: "https://aak.or.ke/about-us" },
   { label: "Membership", href: "https://aak.or.ke/membership" },
   { label: "Reports", href: "https://aak.or.ke/reports" },
   { label: "Resource Centre", href: "https://aak.or.ke/resource-centre" },
-  { label: "Community", href: "https://aak.or.ke/community-events" },
 ];
 
 export function SiteHeader() {
