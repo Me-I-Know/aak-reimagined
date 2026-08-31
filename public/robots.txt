@@ -12,3 +12,8 @@ Allow: /
 
 User-agent: *
 Allow: /
+Allow: /events
+Allow: /arbitration
+Allow: /team
+Allow: /privacy
+Allow: /terms
