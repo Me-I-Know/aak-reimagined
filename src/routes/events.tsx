@@ -49,16 +49,24 @@ const MONTHS = [
 ];
 
 function parts(iso: string) {
-  const [y, m, d] = iso.split("-").map(Number);
-  return { y, m: m - 1, d };
+  const segments = iso.split("-");
+  return {
+    y: Number(segments[0] ?? 0),
+    m: Number(segments[1] ?? 1) - 1,
+    d: Number(segments[2] ?? 1),
+  };
+}
+
+function monthName(index: number) {
+  return MONTHS[index] ?? "";
 }
 
 function formatRange(date: string, endDate?: string) {
   const a = parts(date);
-  if (!endDate) return `${a.d} ${MONTHS[a.m]} ${a.y}`;
+  if (!endDate) return `${a.d} ${monthName(a.m)} ${a.y}`;
   const b = parts(endDate);
-  if (a.m === b.m && a.y === b.y) return `${a.d} to ${b.d} ${MONTHS[a.m]} ${a.y}`;
-  return `${a.d} ${MONTHS[a.m]} to ${b.d} ${MONTHS[b.m]} ${b.y}`;
+  if (a.m === b.m && a.y === b.y) return `${a.d} to ${b.d} ${monthName(a.m)} ${a.y}`;
+  return `${a.d} ${monthName(a.m)} to ${b.d} ${monthName(b.m)} ${b.y}`;
 }
 
 function EventsPage() {
