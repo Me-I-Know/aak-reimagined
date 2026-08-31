@@ -81,8 +81,15 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav className="border-t border-border bg-paper-dim px-6 py-6 lg:hidden">
+        <nav aria-label="Mobile" className="border-t border-border bg-paper-dim px-6 py-6 lg:hidden">
           <ul className="space-y-4">
+            {internalNav.map((item) => (
+              <li key={item.label}>
+                <Link to={item.to} className="label block" onClick={() => setOpen(false)}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             {nav.map((item) => (
               <li key={item.label}>
                 <a href={item.href} className="label block">
