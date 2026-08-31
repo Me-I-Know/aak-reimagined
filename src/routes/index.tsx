@@ -124,7 +124,7 @@ function Home() {
     <div className="min-h-screen bg-paper text-ink">
       <SiteHeader />
 
-      <main className="mx-auto max-w-7xl px-6 py-12">
+      <main id="main" className="mx-auto max-w-7xl px-6 py-12">
         {/* Lead: Awards call for entries + briefings rail */}
         <section className="grid grid-cols-1 gap-12 border-b border-border pb-16 lg:grid-cols-12">
           <div className="flex flex-col lg:col-span-8">
@@ -336,9 +336,9 @@ function Home() {
         <section className="grid grid-cols-1 gap-12 border-b border-border py-24 md:grid-cols-2">
           <Reveal>
             <span className="label mb-4 block text-ink/50">2019</span>
-            <h3 className="mb-6 border-b border-ink pb-3 font-serif text-2xl">
+            <h2 className="mb-6 border-b border-ink pb-3 font-serif text-2xl">
               Safari Green Building Index
-            </h3>
+            </h2>
             <p className="mb-6 text-sm leading-relaxed text-ink/70">
               A national sustainability rating system developed for African climatic and economic
               conditions, guiding certification for new and retrofitted buildings.
@@ -349,9 +349,9 @@ function Home() {
           </Reveal>
           <Reveal delay={90}>
             <span className="label mb-4 block text-ink/50">2025</span>
-            <h3 className="mb-6 border-b border-ink pb-3 font-serif text-2xl">
+            <h2 className="mb-6 border-b border-ink pb-3 font-serif text-2xl">
               Grow A Classroom
-            </h3>
+            </h2>
             <p className="mb-6 text-sm leading-relaxed text-ink/70">
               A professional corporate responsibility programme improving public school
               infrastructure, delivered by member volunteers across the country.
@@ -362,9 +362,9 @@ function Home() {
           </Reveal>
           <Reveal delay={180}>
             <span className="label mb-4 block text-ink/50">2026</span>
-            <h3 className="mb-6 border-b border-ink pb-3 font-serif text-2xl">
+            <h2 className="mb-6 border-b border-ink pb-3 font-serif text-2xl">
               Mulika Mjengo
-            </h3>
+            </h2>
             <p className="mb-6 text-sm leading-relaxed text-ink/70">
               A public safety channel for reporting buildings that pose structural risk, with
               technical assessment coordinated through the Association.
@@ -375,9 +375,9 @@ function Home() {
           </Reveal>
           <Reveal delay={270}>
             <span className="label mb-4 block text-ink/50">Guidance</span>
-            <h3 className="mb-6 border-b border-ink pb-3 font-serif text-2xl">
+            <h2 className="mb-6 border-b border-ink pb-3 font-serif text-2xl">
               Healthy Homes Guidelines
-            </h3>
+            </h2>
             <p className="mb-6 text-sm leading-relaxed text-ink/70">
               Residential design standards addressing ventilation, daylight, sanitation and
               material selection for Kenyan housing.

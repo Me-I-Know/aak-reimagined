@@ -275,7 +275,7 @@ function ArbitrationPage() {
   return (
     <div className="min-h-screen bg-paper text-ink">
       <SiteHeader />
-      <main>
+      <main id="main">
         <section className="border-b border-border">
           <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
             <Reveal>
