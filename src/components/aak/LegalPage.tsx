@@ -15,7 +15,7 @@ type LegalPageProps = {
 
 export function LegalPage({ kicker, title, standfirst, effective, sections }: LegalPageProps) {
   return (
-    <main className="mx-auto max-w-7xl px-6 pt-16 pb-28">
+    <main id="main" className="mx-auto max-w-7xl px-6 pt-16 pb-28">
       <header className="grid grid-cols-1 gap-10 border-b border-ink/15 pb-14 md:grid-cols-12">
         <div className="md:col-span-8">
           <Reveal>

@@ -2,12 +2,17 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "@/assets/aak-logo.png";
 
+const internalNav = [
+  { label: "Events", to: "/events" },
+  { label: "Arbitration", to: "/arbitration" },
+  { label: "Team", to: "/team" },
+] as const;
+
 const nav = [
   { label: "About Us", href: "https://aak.or.ke/about-us" },
   { label: "Membership", href: "https://aak.or.ke/membership" },
   { label: "Reports", href: "https://aak.or.ke/reports" },
   { label: "Resource Centre", href: "https://aak.or.ke/resource-centre" },
-  { label: "Community", href: "https://aak.or.ke/community-events" },
 ];
 
 export function SiteHeader() {
@@ -22,6 +27,9 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-paper/95 backdrop-blur-[2px]">
+      <a href="#main" className="skip-link label">
+        Skip to content
+      </a>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <Link to="/" className="flex items-baseline gap-2.5">
           <img src={logo} alt="Architectural Association of Kenya" className="h-9 w-9" />
@@ -31,13 +39,19 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          {nav.map((item) => (
-            <a
+        <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
+          {internalNav.map((item) => (
+            <Link
               key={item.label}
-              href={item.href}
+              to={item.to}
               className="label text-ink/80 hover:text-aak-red"
+              activeProps={{ className: "label text-aak-red" }}
             >
+              {item.label}
+            </Link>
+          ))}
+          {nav.map((item) => (
+            <a key={item.label} href={item.href} className="label text-ink/80 hover:text-aak-red">
               {item.label}
             </a>
           ))}
@@ -70,8 +84,15 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav className="border-t border-border bg-paper-dim px-6 py-6 lg:hidden">
+        <nav aria-label="Mobile" className="border-t border-border bg-paper-dim px-6 py-6 lg:hidden">
           <ul className="space-y-4">
+            {internalNav.map((item) => (
+              <li key={item.label}>
+                <Link to={item.to} className="label block" onClick={() => setOpen(false)}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             {nav.map((item) => (
               <li key={item.label}>
                 <a href={item.href} className="label block">
