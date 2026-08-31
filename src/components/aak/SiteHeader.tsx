@@ -27,6 +27,9 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-paper/95 backdrop-blur-[2px]">
+      <a href="#main" className="skip-link label">
+        Skip to content
+      </a>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <Link to="/" className="flex items-baseline gap-2.5">
           <img src={logo} alt="Architectural Association of Kenya" className="h-9 w-9" />
