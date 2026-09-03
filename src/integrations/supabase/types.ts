@@ -14,7 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      arbitration_applications: {
+        Row: {
+          applicant_name: string
+          created_at: string
+          discipline: string
+          email: string
+          email_sent: boolean
+          id: string
+          organisation: string | null
+          phone: string | null
+          project: string
+          respondent: string
+          summary: string
+        }
+        Insert: {
+          applicant_name: string
+          created_at?: string
+          discipline: string
+          email: string
+          email_sent?: boolean
+          id?: string
+          organisation?: string | null
+          phone?: string | null
+          project: string
+          respondent: string
+          summary: string
+        }
+        Update: {
+          applicant_name?: string
+          created_at?: string
+          discipline?: string
+          email?: string
+          email_sent?: boolean
+          id?: string
+          organisation?: string | null
+          phone?: string | null
+          project?: string
+          respondent?: string
+          summary?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
